@@ -41,7 +41,7 @@ Poly/
 - **Zod** - Runtime type validation and schema definition
 
 ### Development & Testing
-- **Storybook 8.x** - Component documentation and testing
+- **Storybook 8.x with Next.js** - Component documentation and testing with Next.js framework
 - **Vitest** - Fast unit testing framework
 - **Playwright** - Cross-browser end-to-end testing
 - **Mock Service Worker (MSW)** - API mocking for development and testing
@@ -175,14 +175,15 @@ Next.js application serving as the main user interface for the CRM system.
 - `next-themes` - Theme switching
 
 #### `apps/storybook` - Component Documentation
-Dedicated Storybook application for component development and testing.
+Dedicated Storybook application built on Next.js framework for component development and testing.
 
 **Features:**
-- Interactive component playground
+- Interactive component playground with Next.js optimizations
 - Design system documentation
 - Accessibility testing
 - Visual regression testing
 - MSW integration for realistic data
+- Fast refresh and hot reloading with Next.js
 
 #### `apps/server` - API Server
 Express.js server providing RESTful API endpoints for the CRM system.
