@@ -22,7 +22,7 @@ const config: StorybookConfig = {
     getAbsolutePath("@storybook/addon-vitest")
   ],
   "framework": {
-    "name": getAbsolutePath("@storybook/nextjs"),
+    "name": getAbsolutePath("@storybook/nextjs-vite"),
     "options": {}
   },
   "staticDirs": [
