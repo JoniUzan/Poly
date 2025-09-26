@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@poly/ui": "workspace:*",
+    "lucide-react": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:"
   },
