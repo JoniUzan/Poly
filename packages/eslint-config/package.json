@@ -9,6 +9,7 @@
     "./react-internal": "./react-internal.js"
   },
   "devDependencies": {
+    "@eslint/js": "catalog:",
     "@next/eslint-plugin-next": "catalog:",
     "@typescript-eslint/eslint-plugin": "catalog:",
     "@typescript-eslint/parser": "catalog:",
