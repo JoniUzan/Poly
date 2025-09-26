@@ -8,6 +8,8 @@ This is a monorepo for a CRM (Customer Relationship Management) system built wit
 
 ## Development Commands
 
+**Note**: Use `--filter` commands when working from the monorepo root. When working inside specific app directories (e.g., `apps/storybook/`), use the local commands without `--filter`.
+
 ### Core Commands
 - `pnpm dev` - Start all development servers (uses Turbo)
 - `pnpm build` - Build all apps and packages
@@ -15,7 +17,7 @@ This is a monorepo for a CRM (Customer Relationship Management) system built wit
 - `pnpm format` - Format code with Prettier
 - `pnpm test` - Run all tests
 
-### App-Specific Commands
+### App-Specific Commands (from monorepo root)
 - `pnpm --filter web dev` - Start Next.js CRM app with Turbopack
 - `pnpm --filter web build` - Build Next.js app
 - `pnpm --filter web lint` - Lint web app
@@ -23,6 +25,7 @@ This is a monorepo for a CRM (Customer Relationship Management) system built wit
 
 - `pnpm --filter storybook dev` - Start Storybook on port 6006
 - `pnpm --filter storybook build` - Build Storybook static files
+- `pnpm --filter storybook test` - Run Vitest tests for stories
 
 ### Package-Specific Commands
 - `pnpm --filter @poly/ui lint` - Lint UI package
@@ -46,7 +49,7 @@ This is a monorepo for a CRM (Customer Relationship Management) system built wit
 - **Themes**: next-themes with dark/light mode support
 - **Monorepo**: Turborepo with pnpm workspaces
 - **Testing**: Vitest, Playwright for E2E
-- **Documentation**: Storybook with Next.js framework
+- **Documentation**: Storybook with Next.js-Vite framework (@storybook/nextjs-vite)
 
 ### Package Dependencies
 - The web app depends on `@poly/ui` for shared components
@@ -74,4 +77,4 @@ This is a monorepo for a CRM (Customer Relationship Management) system built wit
 - Server and E2E testing apps mentioned in README are planned but not yet implemented
 - Use `--filter` flag with pnpm to run commands on specific packages
 - Development servers run with Turbo's persistent cache for better performance
-- Storybook is configured with Next.js framework for better compatibility
+- Storybook is configured with @storybook/nextjs-vite framework (required for Vitest addon compatibility)
