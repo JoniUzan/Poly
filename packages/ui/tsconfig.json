@@ -1,12 +1,7 @@
 {
   "extends": "@poly/typescript-config/react-library.json",
   "compilerOptions": {
-    "baseUrl": ".",
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "paths": {
-      "@/*": ["./src/*"]
-    }
+    "baseUrl": "."
   },
   "include": ["src"],
   "exclude": ["node_modules", "**/*.stories.*", "**/*.test.*"]
