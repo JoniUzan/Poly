@@ -1,1 +1,1 @@
-export { Separator } from "./separator.js"
+export { Separator } from "./separator";
