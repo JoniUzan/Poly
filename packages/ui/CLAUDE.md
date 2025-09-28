@@ -30,14 +30,44 @@ From monorepo root:
 ```
 packages/ui/
 ├── src/
-│   ├── components/     # All UI components
-│   │   ├── button.tsx
-│   │   ├── input.tsx
-│   │   ├── separator.tsx
-│   │   ├── sheet.tsx
-│   │   ├── sidebar.tsx
-│   │   ├── skeleton.tsx
-│   │   └── tooltip.tsx
+│   ├── components/     # All UI components (folder-per-component)
+│   │   ├── button/
+│   │   │   ├── button.tsx
+│   │   │   └── index.ts
+│   │   ├── input/
+│   │   │   ├── input.tsx
+│   │   │   └── index.ts
+│   │   ├── separator/
+│   │   │   ├── separator.tsx
+│   │   │   └── index.ts
+│   │   ├── sheet/           # File per component
+│   │   │   ├── sheet.tsx
+│   │   │   ├── sheet-trigger.tsx
+│   │   │   ├── sheet-close.tsx
+│   │   │   ├── sheet-portal.tsx
+│   │   │   ├── sheet-overlay.tsx
+│   │   │   ├── sheet-content.tsx
+│   │   │   ├── sheet-header.tsx
+│   │   │   ├── sheet-footer.tsx
+│   │   │   ├── sheet-title.tsx
+│   │   │   ├── sheet-description.tsx
+│   │   │   └── index.ts
+│   │   ├── sidebar/         # Logical grouping for extremely complex components
+│   │   │   ├── sidebar.tsx           # Main Sidebar component
+│   │   │   ├── sidebar-provider.tsx  # Context, provider, hook
+│   │   │   ├── sidebar-content.tsx   # Content structure components
+│   │   │   ├── sidebar-menu.tsx      # Menu-related components
+│   │   │   ├── sidebar-trigger.tsx   # Trigger and rail components
+│   │   │   └── index.ts
+│   │   ├── skeleton/
+│   │   │   ├── skeleton.tsx
+│   │   │   └── index.ts
+│   │   └── tooltip/         # File per component
+│   │       ├── tooltip.tsx
+│   │       ├── tooltip-trigger.tsx
+│   │       ├── tooltip-provider.tsx
+│   │       ├── tooltip-content.tsx
+│   │       └── index.ts
 │   ├── lib/           # Utility functions
 │   │   └── utils.ts   # cn() helper for class merging
 │   ├── hooks/         # Custom React hooks
@@ -51,20 +81,55 @@ packages/ui/
 
 ## Component Architecture
 
+### File Organization Patterns
+
+The UI library uses two organizational approaches based on component complexity:
+
+#### Standard Approach: File-per-Component
+Most components use individual files for each component:
+```
+sheet/
+├── sheet.tsx
+├── sheet-trigger.tsx
+├── sheet-close.tsx
+├── sheet-content.tsx
+├── sheet-header.tsx
+└── index.ts
+```
+
+#### Exception: Logical Grouping (Only for Extremely Complex Components)
+Only use logical grouping for components with 20+ interdependent parts:
+```
+sidebar/                  # 25+ components, complex interdependencies
+├── sidebar.tsx           # Main component
+├── sidebar-provider.tsx  # Context/state management
+├── sidebar-content.tsx   # Content structure components
+├── sidebar-menu.tsx      # Menu-related components
+├── sidebar-trigger.tsx   # Interaction components
+└── index.ts              # Organized exports
+```
+
+**Guidelines:**
+- **Default**: Use file-per-component for all new components
+- **Exception**: Only use logical grouping for massive, tightly-coupled component systems
+- **Threshold**: If a component has 20+ related parts with complex interdependencies
+- **Examples**: Sidebar (25+ components) uses logical grouping, Sheet/Tooltip use file-per-component
+
 ### Design Patterns
 - **Accessibility-first**: Built on Radix UI primitives for WCAG compliance
 - **Variant-driven**: Use CVA for consistent component variants and sizes
 - **Composable**: Components follow compound component patterns where appropriate
 - **Typed**: Full TypeScript support with proper prop typing
+- **Logical grouping**: Complex components split by functionality, not arbitrarily
 
 ### Component Features
 - **Button**: Multiple variants (default, destructive, outline, secondary, ghost, link) and sizes
 - **Input**: Form input with consistent styling and validation states
 - **Separator**: Horizontal/vertical dividers with proper semantics
-- **Sheet**: Modal dialog/drawer component with multiple sides
-- **Sidebar**: Complex sidebar with collapsible states, mobile support, and nested menus
+- **Sheet**: Modal dialog/drawer component with multiple sides - each sub-component in its own file
+- **Sidebar**: Complex sidebar with collapsible states, mobile support, and nested menus - uses logical grouping due to 25+ interdependent components
 - **Skeleton**: Loading placeholders with animation
-- **Tooltip**: Accessible tooltips with positioning
+- **Tooltip**: Accessible tooltips with positioning - each component in its own file
 
 ## Import Patterns
 
@@ -116,9 +181,34 @@ The package is configured for shadcn/ui with these settings:
 1. **Check dependencies**: Ensure any new Radix UI packages exist in workspace catalog
 2. **Add to catalog**: If missing, add new dependencies to `pnpm-workspace.yaml` catalog first
 3. **Install component**: Use shadcn/ui CLI or manually create component
-4. **Fix imports**: Update any generated imports to use `@poly/ui/*` pattern
-5. **Update exports**: Add new component to package.json exports if needed
-6. **Test**: Run `pnpm check-types` and test in consuming apps
+4. **Organize files**: Choose appropriate structure based on complexity:
+   - **Simple components**: Single file in dedicated folder (like Button, Input)
+   - **Complex components**: Use logical grouping (like Sidebar, Sheet)
+5. **Fix imports**: Update any generated imports to use `@poly/ui/*` pattern
+6. **Create index.ts**: Add clean exports with descriptive comments for complex components
+7. **Update exports**: Component folders automatically work with existing package.json exports
+8. **Test**: Run `pnpm check-types` and test in consuming apps
+
+### Component Organization Guidelines
+
+When deciding how to organize a new component, follow these guidelines:
+
+#### Use File-per-Component (Default Approach) when:
+- **Always use this** unless component is extremely complex
+- Each related component gets its own file
+- Examples: Button (1 file), Sheet (10 files), Tooltip (4 files)
+
+#### Use Logical Grouping (Exceptional Cases Only) when:
+- Component has 20+ tightly interdependent parts
+- Complex state management affects multiple component groups
+- Massive component system like navigation sidebars
+- **Current example**: Only Sidebar (25+ components)
+
+#### File-per-Component Benefits:
+- **Clarity**: Each component easy to find and understand
+- **Modularity**: True separation of concerns
+- **Maintainability**: Changes isolated to specific files
+- **Consistency**: Predictable file structure across library
 
 ### Dependency Management
 - **All dependencies** must use `catalog:` approach for version consistency
@@ -149,10 +239,12 @@ The package exposes these exports for consumption:
   "./globals.css": "./src/styles/globals.css",
   "./postcss.config": "./postcss.config.mjs",
   "./lib/*": "./src/lib/*.ts",
-  "./components/*": "./src/components/*.tsx",
+  "./components/*": "./src/components/*/index.ts",
   "./hooks/*": "./src/hooks/*.ts"
 }
 ```
+
+**Note**: Components are exported through their folder's index.ts file, which provides clean, organized exports regardless of internal file structure.
 
 ## Integration with Apps
 
