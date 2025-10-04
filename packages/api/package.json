@@ -1,0 +1,26 @@
+{
+  "name": "@poly/api",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    "./services/*": "./src/services/*.ts",
+    "./validation/*": "./src/validation/*.ts",
+    "./types/*": "./src/types/*.ts",
+    "./utils/*": "./src/utils/*.ts"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@poly/database": "workspace:*",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@poly/typescript-config": "workspace:*",
+    "@poly/eslint-config": "workspace:*",
+    "@types/node": "catalog:",
+    "typescript": "catalog:"
+  }
+}

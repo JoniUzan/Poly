@@ -12,6 +12,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@poly/api": "workspace:*",
+    "@poly/database": "workspace:*",
     "@poly/ui": "workspace:*",
     "lucide-react": "catalog:",
     "next": "catalog:",
