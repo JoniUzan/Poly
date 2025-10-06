@@ -1,4 +1,10 @@
 {
   "tailwindCSS.experimental.configFile": "packages/ui/src/styles/globals.css",
-  "cSpell.words": ["autodocs"]
+  "cSpell.words": ["anthropics", "autodocs"],
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
+  "material-icon-theme.files.associations": {
+    "*.service.ts": "typescript"
+  }
 }

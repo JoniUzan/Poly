@@ -1,0 +1,16 @@
+// Base Configuration for Poly CRM Database
+// This file contains datasource and generator configuration
+//
+// To migrate to PostgreSQL in production:
+// 1. Change provider to "postgresql"
+// 2. Update DATABASE_URL in .env
+// 3. Run: pnpm db:migrate
+
+datasource db {
+  provider = "sqlite" // Change to "postgresql" for production
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}

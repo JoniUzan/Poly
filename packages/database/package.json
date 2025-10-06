@@ -1,0 +1,32 @@
+{
+  "name": "@poly/database",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "prisma": {
+    "schema": "./prisma/schema",
+    "seed": "tsx prisma/seed.ts"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "dev": "prisma studio",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev",
+    "db:studio": "prisma studio",
+    "db:push": "prisma db push",
+    "db:seed": "tsx prisma/seed.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "catalog:"
+  },
+  "devDependencies": {
+    "@poly/typescript-config": "workspace:*",
+    "@poly/eslint-config": "workspace:*",
+    "@types/node": "catalog:",
+    "prisma": "catalog:",
+    "tsx": "catalog:",
+    "typescript": "catalog:"
+  }
+}
