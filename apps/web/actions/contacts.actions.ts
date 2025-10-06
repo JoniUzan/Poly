@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { ZodError } from "zod";
 import { contactService } from "@poly/api/services/contact.service";
 import {
   createContactSchema,
@@ -26,7 +27,14 @@ export async function createContact(formData: FormData) {
     revalidatePath("/contacts");
 
     return { success: true, contact };
-  } catch (error) {
+  } catch (error: unknown) {
+    if (error instanceof ZodError) {
+      return {
+        success: false,
+        error: "Validation failed",
+        validationErrors: error.errors,
+      };
+    }
     if (error instanceof Error) {
       return { success: false, error: error.message };
     }
@@ -45,13 +53,25 @@ export async function updateContact(id: number, formData: FormData) {
 
     const validatedData = updateContactSchema.parse(rawData);
 
-    const contact = await contactService.update(id, validatedData);
+    // Filter out undefined values to avoid Prisma issues
+    const cleanData = Object.fromEntries(
+      Object.entries(validatedData).filter(([_, v]) => v !== undefined)
+    ) as Partial<typeof validatedData>;
+
+    const contact = await contactService.update(id, cleanData);
 
     revalidatePath("/contacts");
     revalidatePath(`/contacts/${id}`);
 
     return { success: true, contact };
-  } catch (error) {
+  } catch (error: unknown) {
+    if (error instanceof ZodError) {
+      return {
+        success: false,
+        error: "Validation failed",
+        validationErrors: error.errors,
+      };
+    }
     if (error instanceof Error) {
       return { success: false, error: error.message };
     }
@@ -66,7 +86,7 @@ export async function deleteContact(id: number) {
     revalidatePath("/contacts");
 
     return { success: true };
-  } catch (error) {
+  } catch (error: unknown) {
     if (error instanceof Error) {
       return { success: false, error: error.message };
     }

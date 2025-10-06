@@ -3,8 +3,8 @@ import { NextResponse } from 'next/server'
 
 export async function GET() {
   try {
-    // Test database connection
-    await prisma.$queryRaw`SELECT 1`
+    // Test database connection with a simple query
+    await prisma.contact.count()
 
     return NextResponse.json({
       status: 'ok',
@@ -12,7 +12,7 @@ export async function GET() {
       database: 'connected',
       environment: process.env.NODE_ENV,
     })
-  } catch (error) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
         status: 'error',

@@ -1,4 +1,4 @@
-import { config } from "@workspace/eslint-config/library"
+import { config } from "@poly/eslint-config/library"
 
 /** @type {import("eslint").Linter.Config} */
 export default config
