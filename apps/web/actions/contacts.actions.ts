@@ -10,12 +10,12 @@ import {
 
 export async function createContact(formData: FormData) {
   try {
-    // Extract and validate form data
+    // Extract and sanitize form data
     const rawData = {
-      email: formData.get("email"),
-      name: formData.get("name"),
-      phone: formData.get("phone") || undefined,
-      company: formData.get("company") || undefined,
+      email: formData.get("email")?.toString().trim(),
+      name: formData.get("name")?.toString().trim(),
+      phone: formData.get("phone")?.toString().trim() || undefined,
+      company: formData.get("company")?.toString().trim() || undefined,
     };
 
     const validatedData = createContactSchema.parse(rawData);
@@ -44,11 +44,12 @@ export async function createContact(formData: FormData) {
 
 export async function updateContact(id: number, formData: FormData) {
   try {
+    // Extract and sanitize form data
     const rawData = {
-      email: formData.get("email") || undefined,
-      name: formData.get("name") || undefined,
-      phone: formData.get("phone") || undefined,
-      company: formData.get("company") || undefined,
+      email: formData.get("email")?.toString().trim() || undefined,
+      name: formData.get("name")?.toString().trim() || undefined,
+      phone: formData.get("phone")?.toString().trim() || undefined,
+      company: formData.get("company")?.toString().trim() || undefined,
     };
 
     const validatedData = updateContactSchema.parse(rawData);

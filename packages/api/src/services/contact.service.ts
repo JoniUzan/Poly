@@ -1,4 +1,4 @@
-import { prisma } from '@poly/database'
+import { prisma, Prisma } from '@poly/database'
 import type { CreateContactInput, UpdateContactInput } from '../validation/contact.schema'
 
 export const contactService = {
@@ -48,13 +48,19 @@ export const contactService = {
    * @throws Error if contact not found or email already exists
    */
   async update(id: number, data: UpdateContactInput) {
-    // Check if contact exists first
-    await this.findById(id)
-
-    return prisma.contact.update({
-      where: { id },
-      data,
-    })
+    try {
+      return await prisma.contact.update({
+        where: { id },
+        data,
+      })
+    } catch (error) {
+      if (error instanceof Prisma.PrismaClientKnownRequestError) {
+        if (error.code === 'P2025') {
+          throw new Error(`Contact with ID ${id} not found`)
+        }
+      }
+      throw error
+    }
   },
 
   /**
@@ -64,12 +70,18 @@ export const contactService = {
    * @throws Error if contact not found
    */
   async delete(id: number) {
-    // Check if contact exists first
-    await this.findById(id)
-
-    return prisma.contact.delete({
-      where: { id },
-    })
+    try {
+      return await prisma.contact.delete({
+        where: { id },
+      })
+    } catch (error) {
+      if (error instanceof Prisma.PrismaClientKnownRequestError) {
+        if (error.code === 'P2025') {
+          throw new Error(`Contact with ID ${id} not found`)
+        }
+      }
+      throw error
+    }
   },
 
   /**
