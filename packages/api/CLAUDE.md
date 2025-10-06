@@ -114,3 +114,62 @@ Package uses granular exports:
 - `@poly/api/validation/*` - Import validation schemas
 - `@poly/api/types/*` - Import types
 - `@poly/api/utils/*` - Import utilities
+
+## Error Handling Reference
+
+### Service Error Patterns
+
+All services follow consistent error handling patterns:
+
+#### Contact Service Errors
+
+**`contactService.create()`**
+- Throws Prisma error for duplicate email (unique constraint violation)
+- Validation errors caught before service call by Zod schemas
+
+**`contactService.findById()`**
+- Throws `Error: "Contact with ID {id} not found"` when not found
+
+**`contactService.update()`**
+- Throws `Error: "Contact with ID {id} not found"` (Prisma P2025)
+- Throws Prisma error for duplicate email
+
+**`contactService.delete()`**
+- Throws `Error: "Contact with ID {id} not found"` (Prisma P2025)
+
+**`contactService.findAll()` and `contactService.count()`**
+- Never throw - return empty array or 0
+
+### Common Prisma Error Codes
+
+| Code | Description | Service Translation |
+|------|-------------|---------------------|
+| P2025 | Record not found | `"Contact with ID {id} not found"` |
+| P2002 | Unique constraint failed | Native Prisma message |
+| P2003 | Foreign key constraint failed | Native Prisma message |
+
+### Server Action Error Response Format
+
+**Success:**
+```typescript
+{ success: true, contact: Contact }
+```
+
+**Validation Error:**
+```typescript
+{
+  success: false,
+  error: "Validation failed",
+  validationErrors: [{ path: ["email"], message: "Invalid email" }]
+}
+```
+
+**Service Error:**
+```typescript
+{ success: false, error: "Contact with ID 123 not found" }
+```
+
+**Unexpected Error:**
+```typescript
+{ success: false, error: "An unexpected error occurred" }
+```
