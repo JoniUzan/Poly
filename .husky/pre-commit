@@ -1,0 +1,34 @@
+echo "🔍 Running pre-commit checks..."
+
+# Run formatting
+echo "💅 Running Prettier..."
+pnpm format || {
+  echo "❌ Formatting failed. Please fix the errors before committing."
+  exit 1
+}
+
+# Run linting on all packages
+echo "📝 Running lint..."
+pnpm lint || {
+  echo "❌ Linting failed. Please fix the errors before committing."
+  exit 1
+}
+
+# Run type checking on all packages
+echo "🔎 Running type checks..."
+pnpm --filter @poly/ui check-types || {
+  echo "❌ Type checking failed in @poly/ui. Please fix the errors before committing."
+  exit 1
+}
+
+pnpm --filter @poly/api check-types || {
+  echo "❌ Type checking failed in @poly/api. Please fix the errors before committing."
+  exit 1
+}
+
+pnpm --filter web typecheck || {
+  echo "❌ Type checking failed in web app. Please fix the errors before committing."
+  exit 1
+}
+
+echo "✅ All pre-commit checks passed!"
