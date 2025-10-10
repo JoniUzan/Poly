@@ -39,4 +39,3 @@ npm-debug.log*
 *.db
 *.sqlite
 *.sqlite3
-seed.ts
