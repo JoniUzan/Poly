@@ -1,3 +1,5 @@
+#!/bin/sh
+
 echo "🔍 Running pre-commit checks..."
 
 # Run formatting
@@ -14,20 +16,17 @@ pnpm lint || {
   exit 1
 }
 
+# Generate Prisma Client (required for type checking)
+echo "🔧 Generating Prisma Client..."
+pnpm --filter @poly/database db:generate || {
+  echo "❌ Prisma Client generation failed. Please fix the schema before committing."
+  exit 1
+}
+
 # Run type checking on all packages
 echo "🔎 Running type checks..."
-pnpm --filter @poly/ui check-types || {
-  echo "❌ Type checking failed in @poly/ui. Please fix the errors before committing."
-  exit 1
-}
-
-pnpm --filter @poly/api check-types || {
-  echo "❌ Type checking failed in @poly/api. Please fix the errors before committing."
-  exit 1
-}
-
-pnpm --filter web typecheck || {
-  echo "❌ Type checking failed in web app. Please fix the errors before committing."
+pnpm typecheck || {
+  echo "❌ Type checking failed. Please fix the errors before committing."
   exit 1
 }
 

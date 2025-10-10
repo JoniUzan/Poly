@@ -10,8 +10,8 @@
     "lint": {
       "dependsOn": ["^lint"]
     },
-    "check-types": {
-      "dependsOn": ["^check-types", "^db:generate"]
+    "typecheck": {
+      "dependsOn": ["^typecheck", "^db:generate"]
     },
     "dev": {
       "cache": false,

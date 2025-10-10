@@ -21,6 +21,7 @@ commands without `--filter`.
   Studio (port 5555)
 - `pnpm build` - Build all apps and packages
 - `pnpm lint` - Run ESLint across all packages
+- `pnpm typecheck` - Run TypeScript type checking across all packages
 - `pnpm format` - Format code with Prettier
 - `pnpm test` - Run all tests
 
@@ -47,9 +48,9 @@ commands without `--filter`.
 ### Package-Specific Commands
 
 - `pnpm --filter @poly/ui lint` - Lint UI package
-- `pnpm --filter @poly/ui check-types` - TypeScript check for UI package
+- `pnpm --filter @poly/ui typecheck` - TypeScript check for UI package
 - `pnpm --filter @poly/api lint` - Lint API package
-- `pnpm --filter @poly/api check-types` - TypeScript check for API package
+- `pnpm --filter @poly/api typecheck` - TypeScript check for API package
 
 ## Project Architecture
 
@@ -149,3 +150,60 @@ Include:
   Vitest addon compatibility)
 - Prisma Client must be generated before TypeScript compilation (handled by
   Turbo dependencies)
+
+## Git Hooks
+
+This project uses Husky to enforce code quality checks before commits.
+
+### Pre-commit Hook
+
+The pre-commit hook automatically runs on **every commit** and performs the
+following checks on the **entire codebase**:
+
+1. **Format** - Prettier formatting (`pnpm format`)
+2. **Lint** - ESLint on all packages (`pnpm lint`)
+3. **Prisma Generate** - Generates Prisma Client
+   (`pnpm --filter @poly/database db:generate`)
+4. **Type Check** - TypeScript type checking on all packages (`pnpm typecheck`)
+
+**Why full codebase checks?** Running checks on the entire codebase (not just
+staged files) ensures migration safety, catches breaking changes across files,
+and maintains consistency project-wide.
+
+### Bypassing Hooks (Emergency Only)
+
+If you need to bypass hooks in an emergency (NOT recommended):
+
+```bash
+HUSKY_SKIP=1 git commit -m "emergency fix"
+# or
+git commit --no-verify -m "emergency fix"
+```
+
+### Running Hooks Manually
+
+To test the pre-commit hook without committing:
+
+```bash
+.husky/pre-commit
+```
+
+### Troubleshooting
+
+**"Prisma Client not generated" error:**
+
+```bash
+pnpm --filter @poly/database db:generate
+```
+
+**Hooks not running:**
+
+```bash
+pnpm prepare  # Re-install Husky hooks
+```
+
+**Type check failing:**
+
+```bash
+pnpm typecheck  # Run type check manually to see errors
+```
