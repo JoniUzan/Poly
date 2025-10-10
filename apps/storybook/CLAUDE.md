@@ -9,16 +9,19 @@ This is the Storybook documentation app for the @poly/ui component library and t
 ## Key Configuration
 
 ### Framework
+
 - **Framework**: `@storybook/nextjs-vite` (required for Vitest addon compatibility)
 - **Version**: Storybook 9.1.8+
 - **Port**: 6006 (default development port)
 
 ### Testing Setup
+
 - **Testing Framework**: Vitest with @storybook/addon-vitest
 - **Browser Testing**: Playwright with Chromium
 - **Test Location**: Stories with play functions
 
 ### Important Files
+
 - `.storybook/main.ts` - Main Storybook configuration
 - `.storybook/preview.ts` - Global preview settings and CSS imports
 - `.storybook/vitest.setup.ts` - Vitest setup for story testing
@@ -28,6 +31,7 @@ This is the Storybook documentation app for the @poly/ui component library and t
 ## Development Commands
 
 ### Core Commands
+
 - `pnpm dev` - Start Storybook development server on port 6006
 - `pnpm build` - Build Storybook static files
 - `pnpm preview` - Preview built Storybook
@@ -38,6 +42,7 @@ This is the Storybook documentation app for the @poly/ui component library and t
 ## Story Development Patterns
 
 ### Story Structure
+
 ```typescript
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import { expect, userEvent } from "storybook/test";
@@ -67,6 +72,7 @@ export const Default: Story = {
 ```
 
 ### Testing Imports
+
 - Use `import { expect, userEvent } from "storybook/test";` (no @ prefix)
 - Storybook 9+ provides `canvas` directly in play function props
 - No need for `within(canvasElement)` wrapper
@@ -76,6 +82,7 @@ export const Default: Story = {
 This Storybook covers documentation for:
 
 ### 1. @poly/ui Component Library
+
 - Base UI components (Button, Input, Card, etc.)
 - Layout components
 - Form components
@@ -83,12 +90,14 @@ This Storybook covers documentation for:
 - Data display components
 
 ### 2. Web Application Components
+
 - App-specific components from `apps/web/`
 - Business logic components
 - Feature-specific components
 - Composite components
 
 ### 3. Page-level Stories
+
 - Complete page layouts
 - User flows and interactions
 - Integration scenarios
@@ -97,12 +106,14 @@ This Storybook covers documentation for:
 ## Dependencies
 
 ### Framework Dependencies
+
 - `@storybook/nextjs-vite` - Main framework (required for Vitest addon)
 - `@storybook/addon-vitest` - Testing integration
 - `@storybook/addon-a11y` - Accessibility testing
 - `@storybook/addon-docs` - Auto-generated documentation
 
 ### Component Dependencies
+
 - `@poly/ui` - Main UI component library
 - `lucide-react` - Icon library
 - All dependencies managed through pnpm catalog system
@@ -110,7 +121,9 @@ This Storybook covers documentation for:
 ## Critical Configuration Notes
 
 ### PostCSS Configuration
+
 The PostCSS config **must** use object format for nextjs-vite compatibility:
+
 ```javascript
 // ✅ Correct format
 const config = {
@@ -126,12 +139,15 @@ const config = {
 ```
 
 ### CSS Imports
+
 Global CSS must be imported in `.storybook/preview.ts`:
+
 ```typescript
-import '../src/styles/globals.css';
+import "../src/styles/globals.css";
 ```
 
 ### Vitest Integration
+
 - Vitest config uses `storybookTest` plugin for story testing
 - Browser mode enabled with Playwright provider
 - Setup file configures project annotations for testing context
@@ -144,6 +160,7 @@ import '../src/styles/globals.css';
 4. **Framework Compatibility**: Only `@storybook/nextjs-vite` works with Vitest addon, not `@storybook/nextjs`
 
 ## File Structure
+
 ```
 apps/storybook/
 ├── .storybook/

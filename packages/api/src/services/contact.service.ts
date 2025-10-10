@@ -1,5 +1,8 @@
-import { prisma, Prisma } from '@poly/database'
-import type { CreateContactInput, UpdateContactInput } from '../validation/contact.schema'
+import { prisma, Prisma } from "@poly/database";
+import type {
+  CreateContactInput,
+  UpdateContactInput,
+} from "../validation/contact.schema";
 
 export const contactService = {
   /**
@@ -9,7 +12,7 @@ export const contactService = {
    * @throws Error if email already exists (unique constraint violation)
    */
   async create(data: CreateContactInput) {
-    return prisma.contact.create({ data })
+    return prisma.contact.create({ data });
   },
 
   /**
@@ -18,8 +21,8 @@ export const contactService = {
    */
   async findAll() {
     return prisma.contact.findMany({
-      orderBy: { createdAt: 'desc' },
-    })
+      orderBy: { createdAt: "desc" },
+    });
   },
 
   /**
@@ -31,13 +34,13 @@ export const contactService = {
   async findById(id: number) {
     const contact = await prisma.contact.findUnique({
       where: { id },
-    })
+    });
 
     if (!contact) {
-      throw new Error(`Contact with ID ${id} not found`)
+      throw new Error(`Contact with ID ${id} not found`);
     }
 
-    return contact
+    return contact;
   },
 
   /**
@@ -52,14 +55,14 @@ export const contactService = {
       return await prisma.contact.update({
         where: { id },
         data,
-      })
+      });
     } catch (error) {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
-        if (error.code === 'P2025') {
-          throw new Error(`Contact with ID ${id} not found`)
+        if (error.code === "P2025") {
+          throw new Error(`Contact with ID ${id} not found`);
         }
       }
-      throw error
+      throw error;
     }
   },
 
@@ -73,14 +76,14 @@ export const contactService = {
     try {
       return await prisma.contact.delete({
         where: { id },
-      })
+      });
     } catch (error) {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
-        if (error.code === 'P2025') {
-          throw new Error(`Contact with ID ${id} not found`)
+        if (error.code === "P2025") {
+          throw new Error(`Contact with ID ${id} not found`);
         }
       }
-      throw error
+      throw error;
     }
   },
 
@@ -89,6 +92,6 @@ export const contactService = {
    * @returns Contact count
    */
   async count() {
-    return prisma.contact.count()
+    return prisma.contact.count();
   },
-}
+};

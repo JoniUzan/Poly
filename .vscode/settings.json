@@ -6,5 +6,6 @@
   },
   "material-icon-theme.files.associations": {
     "*.service.ts": "typescript"
-  }
+  },
+  "postman.settings.dotenv-detection-notification-visibility": false
 }

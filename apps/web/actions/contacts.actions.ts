@@ -56,7 +56,7 @@ export async function updateContact(id: number, formData: FormData) {
 
     // Filter out undefined values to avoid Prisma issues
     const cleanData = Object.fromEntries(
-      Object.entries(validatedData).filter(([_, v]) => v !== undefined)
+      Object.entries(validatedData).filter(([_, v]) => v !== undefined),
     ) as Partial<typeof validatedData>;
 
     const contact = await contactService.update(id, cleanData);

@@ -11,6 +11,7 @@ This is a monorepo for a CRM (Customer Relationship Management) system built wit
 **Note**: Use `--filter` commands when working from the monorepo root. When working inside specific app directories (e.g., `apps/storybook/`), use the local commands without `--filter`.
 
 ### Core Commands
+
 - `pnpm dev` - Start all development servers: web app, Storybook, and Prisma Studio (port 5555)
 - `pnpm build` - Build all apps and packages
 - `pnpm lint` - Run ESLint across all packages
@@ -18,6 +19,7 @@ This is a monorepo for a CRM (Customer Relationship Management) system built wit
 - `pnpm test` - Run all tests
 
 ### App-Specific Commands (from monorepo root)
+
 - `pnpm --filter web dev` - Start Next.js CRM app with Turbopack (port 3000)
 - `pnpm --filter web build` - Build Next.js app
 - `pnpm --filter web lint` - Lint web app
@@ -28,6 +30,7 @@ This is a monorepo for a CRM (Customer Relationship Management) system built wit
 - `pnpm --filter storybook test` - Run Vitest tests for stories
 
 ### Database Commands
+
 - `pnpm --filter @poly/database db:generate` - Generate Prisma Client
 - `pnpm --filter @poly/database db:migrate` - Run database migrations
 - `pnpm --filter @poly/database db:studio` - Open Prisma Studio (port 5555)
@@ -35,6 +38,7 @@ This is a monorepo for a CRM (Customer Relationship Management) system built wit
 - `pnpm --filter @poly/database db:seed` - Seed database with default data
 
 ### Package-Specific Commands
+
 - `pnpm --filter @poly/ui lint` - Lint UI package
 - `pnpm --filter @poly/ui check-types` - TypeScript check for UI package
 - `pnpm --filter @poly/api lint` - Lint API package
@@ -43,6 +47,7 @@ This is a monorepo for a CRM (Customer Relationship Management) system built wit
 ## Project Architecture
 
 ### Monorepo Structure
+
 - `apps/web/` - Next.js 15 CRM application (main UI)
 - `apps/storybook/` - Storybook documentation for components
 - `packages/ui/` - Shared UI component library (shadcn/ui based)
@@ -52,6 +57,7 @@ This is a monorepo for a CRM (Customer Relationship Management) system built wit
 - `packages/typescript-config/` - Shared TypeScript configuration
 
 ### Technology Stack
+
 - **Frontend**: Next.js 15 with App Router, React 19, TypeScript 5.9+
 - **Backend**: Next.js Server Actions and API Routes (no separate server)
 - **Database**: Prisma ORM with SQLite (development) → PostgreSQL (production path)
@@ -72,6 +78,7 @@ This is a monorepo for a CRM (Customer Relationship Management) system built wit
 **Data Flow**: Component → Server Action → Service → Prisma → Database
 
 **Layer Responsibilities**:
+
 - **Services** (`packages/api/src/services/`) - ALL business logic, database operations, throw errors
 - **Server Actions** (`apps/web/actions/`) - Form handling, call services, cache revalidation, catch/format errors
 - **API Routes** (`apps/web/app/api/`) - Only for webhooks/external integrations (n8n, etc.)
@@ -79,7 +86,7 @@ This is a monorepo for a CRM (Customer Relationship Management) system built wit
 
 **Error Handling**: Services throw → Actions/Routes catch and format
 
-**Database**: Prisma with multi-file schemas in `packages/database/prisma/schema/` (base.prisma + models/*.prisma)
+**Database**: Prisma with multi-file schemas in `packages/database/prisma/schema/` (base.prisma + models/\*.prisma)
 
 ### Testing Strategy
 
@@ -102,6 +109,7 @@ export async function createOrder(data: CreateOrderInput): Promise<Order> {
 ```
 
 Include:
+
 - Function purpose
 - `@param` for each parameter with description
 - `@returns` describing return value

@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 
-import { cn } from "@poly/ui/lib/utils"
+import { cn } from "@poly/ui/lib/utils";
 
 function SheetHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
@@ -11,7 +11,7 @@ function SheetHeader({ className, ...props }: React.ComponentProps<"div">) {
       className={cn("flex flex-col gap-1.5 p-4", className)}
       {...props}
     />
-  )
+  );
 }
 
-export { SheetHeader }
+export { SheetHeader };
