@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import * as SheetPrimitive from "@radix-ui/react-dialog"
+import * as React from "react";
+import * as SheetPrimitive from "@radix-ui/react-dialog";
 
-import { cn } from "@poly/ui/lib/utils"
+import { cn } from "@poly/ui/lib/utils";
 
 function SheetTitle({
   className,
@@ -15,7 +15,7 @@ function SheetTitle({
       className={cn("text-foreground font-semibold", className)}
       {...props}
     />
-  )
+  );
 }
 
-export { SheetTitle }
+export { SheetTitle };

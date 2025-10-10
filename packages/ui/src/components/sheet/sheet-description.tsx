@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import * as SheetPrimitive from "@radix-ui/react-dialog"
+import * as React from "react";
+import * as SheetPrimitive from "@radix-ui/react-dialog";
 
-import { cn } from "@poly/ui/lib/utils"
+import { cn } from "@poly/ui/lib/utils";
 
 function SheetDescription({
   className,
@@ -15,7 +15,7 @@ function SheetDescription({
       className={cn("text-muted-foreground text-sm", className)}
       {...props}
     />
-  )
+  );
 }
 
-export { SheetDescription }
+export { SheetDescription };

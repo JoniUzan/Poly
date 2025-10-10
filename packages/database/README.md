@@ -12,11 +12,13 @@ Database package for Poly CRM using Prisma ORM.
 ## Database Setup
 
 1. Generate Prisma Client:
+
    ```bash
    pnpm --filter @poly/database db:generate
    ```
 
 2. Create and apply migrations:
+
    ```bash
    pnpm --filter @poly/database db:migrate --name your_migration_name
    ```
@@ -29,10 +31,10 @@ Database package for Poly CRM using Prisma ORM.
 ## Usage
 
 ```typescript
-import { prisma } from '@poly/database'
+import { prisma } from "@poly/database";
 
 // Query database
-const contacts = await prisma.contact.findMany()
+const contacts = await prisma.contact.findMany();
 ```
 
 ## Migration to PostgreSQL
@@ -40,12 +42,14 @@ const contacts = await prisma.contact.findMany()
 When ready to migrate from SQLite to PostgreSQL:
 
 1. Update `prisma/schema.prisma`:
+
    ```diff
    - provider = "sqlite"
    + provider = "postgresql"
    ```
 
 2. Update `.env`:
+
    ```diff
    - DATABASE_URL="file:./dev.db"
    + DATABASE_URL="postgresql://user:password@host:5432/database"

@@ -1,1 +1,1 @@
-export * from './contact.schema'
+export * from "./contact.schema";
