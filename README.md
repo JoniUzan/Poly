@@ -1,6 +1,9 @@
 # CRM Monorepo - Product Management System
 
-A comprehensive CRM (Customer Relationship Management) application built with modern web technologies in a monorepo architecture. This project focuses on product management with a complete development ecosystem including design system documentation, API generation, and end-to-end testing.
+A comprehensive CRM (Customer Relationship Management) application built with
+modern web technologies in a monorepo architecture. This project focuses on
+product management with a complete development ecosystem including design system
+documentation, API generation, and end-to-end testing.
 
 ## 🏗️ Project Architecture
 
@@ -44,7 +47,8 @@ Poly/
 
 ### Development & Testing
 
-- **Storybook 8.x with Next.js** - Component documentation and testing with Next.js framework
+- **Storybook 8.x with Next.js** - Component documentation and testing with
+  Next.js framework
 - **Vitest** - Fast unit testing framework
 - **Playwright** - Cross-browser end-to-end testing
 - **Mock Service Worker (MSW)** - API mocking for development and testing
@@ -189,7 +193,8 @@ Next.js application serving as the main user interface for the CRM system.
 
 #### `apps/storybook` - Component Documentation
 
-Dedicated Storybook application built on Next.js framework for component development and testing.
+Dedicated Storybook application built on Next.js framework for component
+development and testing.
 
 **Features:**
 
@@ -257,7 +262,8 @@ Shared ESLint configuration with rules for TypeScript, React, and accessibility.
 
 #### `packages/typescript-config` - Type Configuration
 
-Base TypeScript configurations for different environments (apps, packages, testing).
+Base TypeScript configurations for different environments (apps, packages,
+testing).
 
 ## 🎨 Design System
 
@@ -355,18 +361,22 @@ pnpm build && pnpm start    # Production builds locally
 
 - **[Design System](./DESIGN_SYSTEM.md)** - Component library and design tokens
 - **[API Reference](./docs/api/)** - OpenAPI documentation and examples
-- **[Component Stories](./apps/storybook/)** - Interactive component documentation
+- **[Component Stories](./apps/storybook/)** - Interactive component
+  documentation
 - **[Testing Guide](./docs/testing.md)** - Testing strategies and best practices
-- **[Deployment Guide](./docs/deployment.md)** - Deployment and infrastructure setup
+- **[Deployment Guide](./docs/deployment.md)** - Deployment and infrastructure
+  setup
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
+for details.
 
 ## 🙏 Acknowledgments
 
 - [shadcn/ui](https://ui.shadcn.com/) for the excellent component library
-- [Tailwind CSS](https://tailwindcss.com/) for the utility-first styling approach
+- [Tailwind CSS](https://tailwindcss.com/) for the utility-first styling
+  approach
 - [Radix UI](https://www.radix-ui.com/) for accessible primitive components
 - [Turborepo](https://turbo.build/) for efficient monorepo management
 

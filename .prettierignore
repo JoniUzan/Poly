@@ -1,0 +1,69 @@
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+
+# Build outputs
+.next
+out
+dist
+build
+.turbo
+.vercel
+
+# Cache
+.cache
+*.tsbuildinfo
+
+# Database
+*.db
+*.db-journal
+dev.db
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Generated files
+*.generated.*
+.next/
+coverage/
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Storybook
+storybook-static
+
+# Prisma
+prisma/migrations/**/*.sql
+packages/database/prisma/migrations
+
+# Lock files (should not be formatted)
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Public assets
+public/**/*.svg
+public/**/*.png
+public/**/*.jpg
+public/**/*.jpeg
+public/**/*.gif

@@ -26,8 +26,8 @@ Models are organized by domain in separate files:
 
 ## Multi-File Support
 
-Prisma 6.7.0+ natively supports multiple schema files. All `.prisma` files
-in the `schema/` directory are automatically discovered and merged.
+Prisma 6.7.0+ natively supports multiple schema files. All `.prisma` files in
+the `schema/` directory are automatically discovered and merged.
 
 No build tools or third-party packages required!
 
