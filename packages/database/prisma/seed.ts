@@ -15,7 +15,7 @@ async function main() {
 
   if (!adminPassword || !userPassword) {
     throw new Error(
-      "SEED_ADMIN_PASSWORD and SEED_USER_PASSWORD must be set in .env file",
+      "SEED_ADMIN_PASSWORD and SEED_USER_PASSWORD must be set in .env file"
     );
   }
 

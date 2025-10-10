@@ -4,7 +4,9 @@ This file provides guidance to Claude Code when working with the API package.
 
 ## Package Purpose
 
-Business logic layer containing all services, validation schemas, and shared logic. Framework-agnostic and reusable across Server Actions, API Routes, and tests.
+Business logic layer containing all services, validation schemas, and shared
+logic. Framework-agnostic and reusable across Server Actions, API Routes, and
+tests.
 
 ## Key Principles
 
@@ -104,7 +106,8 @@ src/
 
 ## Testing
 
-Services are framework-agnostic and easily testable. Test factories should use services (not direct Prisma) to maintain business logic.
+Services are framework-agnostic and easily testable. Test factories should use
+services (not direct Prisma) to maintain business logic.
 
 ## Exports
 

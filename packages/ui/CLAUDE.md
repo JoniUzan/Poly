@@ -1,10 +1,13 @@
 # CLAUDE.md - @poly/ui Package
 
-This file provides guidance to Claude Code (claude.ai/code) when working with the UI component library.
+This file provides guidance to Claude Code (claude.ai/code) when working with
+the UI component library.
 
 ## Package Overview
 
-This is the shared UI component library for the Poly CRM monorepo. It's built on top of shadcn/ui components with Radix UI primitives, providing a consistent design system across all applications.
+This is the shared UI component library for the Poly CRM monorepo. It's built on
+top of shadcn/ui components with Radix UI primitives, providing a consistent
+design system across all applications.
 
 ### Technology Stack
 
@@ -118,31 +121,41 @@ sidebar/                  # 25+ components, complex interdependencies
 **Guidelines:**
 
 - **Default**: Use file-per-component for all new components
-- **Exception**: Only use logical grouping for massive, tightly-coupled component systems
-- **Threshold**: If a component has 20+ related parts with complex interdependencies
-- **Examples**: Sidebar (25+ components) uses logical grouping, Sheet/Tooltip use file-per-component
+- **Exception**: Only use logical grouping for massive, tightly-coupled
+  component systems
+- **Threshold**: If a component has 20+ related parts with complex
+  interdependencies
+- **Examples**: Sidebar (25+ components) uses logical grouping, Sheet/Tooltip
+  use file-per-component
 
 ### Design Patterns
 
 - **Accessibility-first**: Built on Radix UI primitives for WCAG compliance
 - **Variant-driven**: Use CVA for consistent component variants and sizes
-- **Composable**: Components follow compound component patterns where appropriate
+- **Composable**: Components follow compound component patterns where
+  appropriate
 - **Typed**: Full TypeScript support with proper prop typing
-- **Logical grouping**: Complex components split by functionality, not arbitrarily
+- **Logical grouping**: Complex components split by functionality, not
+  arbitrarily
 
 ### Component Features
 
-- **Button**: Multiple variants (default, destructive, outline, secondary, ghost, link) and sizes
+- **Button**: Multiple variants (default, destructive, outline, secondary,
+  ghost, link) and sizes
 - **Input**: Form input with consistent styling and validation states
 - **Separator**: Horizontal/vertical dividers with proper semantics
-- **Sheet**: Modal dialog/drawer component with multiple sides - each sub-component in its own file
-- **Sidebar**: Complex sidebar with collapsible states, mobile support, and nested menus - uses logical grouping due to 25+ interdependent components
+- **Sheet**: Modal dialog/drawer component with multiple sides - each
+  sub-component in its own file
+- **Sidebar**: Complex sidebar with collapsible states, mobile support, and
+  nested menus - uses logical grouping due to 25+ interdependent components
 - **Skeleton**: Loading placeholders with animation
-- **Tooltip**: Accessible tooltips with positioning - each component in its own file
+- **Tooltip**: Accessible tooltips with positioning - each component in its own
+  file
 
 ## Import Patterns
 
-**CRITICAL**: Always use package exports for internal imports within the UI package.
+**CRITICAL**: Always use package exports for internal imports within the UI
+package.
 
 ### Correct Internal Imports
 
@@ -194,15 +207,19 @@ The package is configured for shadcn/ui with these settings:
 
 ### Process for Adding Components
 
-1. **Check dependencies**: Ensure any new Radix UI packages exist in workspace catalog
-2. **Add to catalog**: If missing, add new dependencies to `pnpm-workspace.yaml` catalog first
+1. **Check dependencies**: Ensure any new Radix UI packages exist in workspace
+   catalog
+2. **Add to catalog**: If missing, add new dependencies to `pnpm-workspace.yaml`
+   catalog first
 3. **Install component**: Use shadcn/ui CLI or manually create component
 4. **Organize files**: Choose appropriate structure based on complexity:
    - **Simple components**: Single file in dedicated folder (like Button, Input)
    - **Complex components**: Use logical grouping (like Sidebar, Sheet)
 5. **Fix imports**: Update any generated imports to use `@poly/ui/*` pattern
-6. **Create index.ts**: Add clean exports with descriptive comments for complex components
-7. **Update exports**: Component folders automatically work with existing package.json exports
+6. **Create index.ts**: Add clean exports with descriptive comments for complex
+   components
+7. **Update exports**: Component folders automatically work with existing
+   package.json exports
 8. **Test**: Run `pnpm check-types` and test in consuming apps
 
 ### Component Organization Guidelines
@@ -232,7 +249,8 @@ When deciding how to organize a new component, follow these guidelines:
 ### Dependency Management
 
 - **All dependencies** must use `catalog:` approach for version consistency
-- **Never hardcode versions** in package.json - always reference the workspace catalog
+- **Never hardcode versions** in package.json - always reference the workspace
+  catalog
 - **Add new Radix UI packages** to workspace catalog before using them
 
 Example of adding a new Radix UI dependency:
@@ -266,7 +284,8 @@ The package exposes these exports for consumption:
 }
 ```
 
-**Note**: Components are exported through their folder's index.ts file, which provides clean, organized exports regardless of internal file structure.
+**Note**: Components are exported through their folder's index.ts file, which
+provides clean, organized exports regardless of internal file structure.
 
 ## Integration with Apps
 

@@ -13,6 +13,7 @@
     "@poly/typescript-config": "workspace:*",
     "eslint-plugin-storybook": "catalog:",
     "prettier": "catalog:",
+    "prettier-plugin-tailwindcss": "catalog:",
     "turbo": "catalog:",
     "typescript": "catalog:"
   },

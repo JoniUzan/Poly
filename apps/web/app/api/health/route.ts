@@ -22,7 +22,7 @@ export async function GET() {
           code: error.code,
           database: "disconnected",
         },
-        { status: 500 },
+        { status: 500 }
       );
     }
 
@@ -34,7 +34,7 @@ export async function GET() {
           details: error.message,
           database: "disconnected",
         },
-        { status: 500 },
+        { status: 500 }
       );
     }
 
@@ -45,7 +45,7 @@ export async function GET() {
         message: error instanceof Error ? error.message : "Unknown error",
         database: "disconnected",
       },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }

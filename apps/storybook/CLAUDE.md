@@ -1,16 +1,20 @@
 # CLAUDE.md - Storybook App
 
-This file provides guidance to Claude Code when working with the Storybook application in this monorepo.
+This file provides guidance to Claude Code when working with the Storybook
+application in this monorepo.
 
 ## Storybook App Overview
 
-This is the Storybook documentation app for the @poly/ui component library and the web application. It provides interactive documentation and testing for all UI components, web app components, and page-level stories.
+This is the Storybook documentation app for the @poly/ui component library and
+the web application. It provides interactive documentation and testing for all
+UI components, web app components, and page-level stories.
 
 ## Key Configuration
 
 ### Framework
 
-- **Framework**: `@storybook/nextjs-vite` (required for Vitest addon compatibility)
+- **Framework**: `@storybook/nextjs-vite` (required for Vitest addon
+  compatibility)
 - **Version**: Storybook 9.1.8+
 - **Port**: 6006 (default development port)
 
@@ -26,7 +30,8 @@ This is the Storybook documentation app for the @poly/ui component library and t
 - `.storybook/preview.ts` - Global preview settings and CSS imports
 - `.storybook/vitest.setup.ts` - Vitest setup for story testing
 - `vitest.config.ts` - Vitest configuration with Storybook integration
-- `postcss.config.mjs` - **Must use object format** (not array) for nextjs-vite compatibility
+- `postcss.config.mjs` - **Must use object format** (not array) for nextjs-vite
+  compatibility
 
 ## Development Commands
 
@@ -154,10 +159,14 @@ import "../src/styles/globals.css";
 
 ## Common Issues
 
-1. **PostCSS Format Error**: Ensure postcss.config.mjs uses object format, not array
-2. **Import Errors**: Use `storybook/test` not `@storybook/test` for testing utilities
-3. **Canvas Access**: Use `canvas` prop directly in play functions (Storybook 9+)
-4. **Framework Compatibility**: Only `@storybook/nextjs-vite` works with Vitest addon, not `@storybook/nextjs`
+1. **PostCSS Format Error**: Ensure postcss.config.mjs uses object format, not
+   array
+2. **Import Errors**: Use `storybook/test` not `@storybook/test` for testing
+   utilities
+3. **Canvas Access**: Use `canvas` prop directly in play functions (Storybook
+   9+)
+4. **Framework Compatibility**: Only `@storybook/nextjs-vite` works with Vitest
+   addon, not `@storybook/nextjs`
 
 ## File Structure
 
