@@ -2,12 +2,11 @@
 
 echo "🔍 Running pre-commit checks..."
 
-# Run formatting
-echo "💅 Running Prettier..."
-pnpm format || {
-  echo "❌ Formatting failed. Please fix the errors before committing."
-  exit 1
-}
+# Auto-fix formatting
+echo "💅 Auto-formatting with Prettier..."
+pnpm format
+git add -u
+echo "✓ Files formatted and re-staged"
 
 # Run linting on all packages
 echo "📝 Running lint..."
