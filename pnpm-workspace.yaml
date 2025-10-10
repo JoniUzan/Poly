@@ -82,3 +82,4 @@ catalogs:
     globals: "^15.15.0"
     "@vitejs/plugin-react": "^5.0.0"
     "@turbo/gen": "^2.5.5"
+    husky: "^9.1.7"

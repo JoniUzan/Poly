@@ -1,0 +1,32 @@
+#!/bin/sh
+
+echo "🔍 Running pre-commit checks..."
+
+# Auto-fix formatting
+echo "💅 Auto-formatting with Prettier..."
+pnpm format
+git add -u
+echo "✓ Files formatted and re-staged"
+
+# Run linting on all packages
+echo "📝 Running lint..."
+pnpm lint || {
+  echo "❌ Linting failed. Please fix the errors before committing."
+  exit 1
+}
+
+# Generate Prisma Client (required for type checking)
+echo "🔧 Generating Prisma Client..."
+pnpm --filter @poly/database db:generate || {
+  echo "❌ Prisma Client generation failed. Please fix the schema before committing."
+  exit 1
+}
+
+# Run type checking on all packages
+echo "🔎 Running type checks..."
+pnpm typecheck || {
+  echo "❌ Type checking failed. Please fix the errors before committing."
+  exit 1
+}
+
+echo "✅ All pre-commit checks passed!"
