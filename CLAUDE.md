@@ -5,9 +5,10 @@ code in this repository.
 
 ## Project Overview
 
-This is a monorepo for a CRM (Customer Relationship Management) system built
-with modern web technologies. The project uses Turborepo for monorepo management
-and pnpm for package management.
+This is a monorepo for **Poly**, an AI automations company that builds custom AI
+solutions for customers. The project includes landing pages, documentation,
+client portals, and internal tools. Built with modern web technologies using
+Turborepo for monorepo management and pnpm for package management.
 
 ## Development Commands
 
@@ -27,7 +28,7 @@ commands without `--filter`.
 
 ### App-Specific Commands (from monorepo root)
 
-- `pnpm --filter web dev` - Start Next.js CRM app with Turbopack (port 3000)
+- `pnpm --filter web dev` - Start Next.js main app with Turbopack (port 3000)
 - `pnpm --filter web build` - Build Next.js app
 - `pnpm --filter web lint` - Lint web app
 - `pnpm --filter web typecheck` - TypeScript check for web app
@@ -56,13 +57,16 @@ commands without `--filter`.
 
 ### Monorepo Structure
 
-- `apps/web/` - Next.js 15 CRM application (main UI)
+- `apps/web/` - Next.js 15 main application (landing pages, marketing site)
 - `apps/storybook/` - Storybook documentation for components
 - `packages/ui/` - Shared UI component library (shadcn/ui based)
 - `packages/database/` - Prisma ORM with database schema and client
 - `packages/api/` - Business logic layer with services and validation
 - `packages/eslint-config/` - Shared ESLint configuration
 - `packages/typescript-config/` - Shared TypeScript configuration
+
+**Note**: Additional apps for documentation, client portals, or internal tools
+can be added as needed to support custom AI solution delivery.
 
 ### Technology Stack
 
@@ -90,11 +94,11 @@ commands without `--filter`.
 **Layer Responsibilities**:
 
 - **Services** (`packages/api/src/services/`) - ALL business logic, database
-  operations, throw errors
+  operations, AI integrations, throw errors
 - **Server Actions** (`apps/web/actions/`) - Form handling, call services, cache
   revalidation, catch/format errors
-- **API Routes** (`apps/web/app/api/`) - Only for webhooks/external integrations
-  (n8n, etc.)
+- **API Routes** (`apps/web/app/api/`) - Webhooks, external integrations, AI
+  service endpoints, health checks
 - **Validation** (`packages/api/src/validation/`) - Zod schemas for runtime
   validation
 
@@ -114,12 +118,14 @@ When writing services, actions, or utilities, always add JSDoc comments:
 
 ```typescript
 /**
- * Creates a new order with related tasks and notifications
- * @param data - Order creation data including customer ID and items
- * @returns Created order with all relationships
- * @throws Error if customer not found or inactive
+ * Processes an AI automation request and tracks usage
+ * @param data - Automation request data including client ID and parameters
+ * @returns Processed automation result with usage metrics
+ * @throws Error if client not found or quota exceeded
  */
-export async function createOrder(data: CreateOrderInput): Promise<Order> {
+export async function processAutomation(
+  data: AutomationInput
+): Promise<AutomationResult> {
   // implementation
 }
 ```
@@ -136,9 +142,11 @@ Include:
 - **No separate server package**: Everything runs in Next.js (Server Actions +
   API Routes)
 - **Use Server Actions** for internal form submissions and mutations
-- **Use API Routes** only for external webhooks (n8n, Zapier, etc.) or health
-  checks
+- **Use API Routes** for AI service integrations, external webhooks (automation
+  platforms, client systems), or health checks
 - **Business logic belongs in services**, not in actions or routes
+- **AI integrations** should be implemented in services with proper error
+  handling and rate limiting
 - Prisma schema uses multi-file structure with `prisma.schema` config pointing
   to `./prisma/schema` directory
 - Database connection uses relative path `file:../dev.db` to prevent duplicate
