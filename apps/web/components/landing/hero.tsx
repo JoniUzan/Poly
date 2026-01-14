@@ -1,87 +1,117 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { Button } from "@poly/ui/components/button";
-import { Badge } from "@poly/ui/components/badge";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+
+const automationExamples = [
+  "Sync my CRM with accounting software automatically",
+  "Send follow-up emails when leads go cold",
+  "Generate weekly reports from all my tools",
+  "Qualify leads with an AI chatbot 24/7",
+  "Auto-update inventory across all sales channels",
+];
+
+const quickStarts = [
+  { label: "Lead Automation", icon: "🎯" },
+  { label: "Email Sequences", icon: "📧" },
+  { label: "CRM Sync", icon: "🔄" },
+  { label: "AI Chatbots", icon: "🤖" },
+  { label: "Data Reports", icon: "📊" },
+];
 
 export function Hero() {
+  const [displayText, setDisplayText] = useState("");
+  const [exampleIndex, setExampleIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentExample = automationExamples[exampleIndex];
+    const timeout = setTimeout(
+      () => {
+        if (!isDeleting) {
+          if (currentExample && displayText.length < currentExample.length) {
+            setDisplayText(currentExample.slice(0, displayText.length + 1));
+          } else {
+            setTimeout(() => setIsDeleting(true), 2000);
+          }
+        } else {
+          if (displayText.length > 0) {
+            setDisplayText(displayText.slice(0, -1));
+          } else {
+            setIsDeleting(false);
+            setExampleIndex((prev) => (prev + 1) % automationExamples.length);
+          }
+        }
+      },
+      isDeleting ? 30 : 50
+    );
+
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, exampleIndex]);
+
   return (
-    <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden">
-      {/* Background gradient effects */}
-      <div className="from-background via-background to-background/80 absolute inset-0 bg-gradient-to-b" />
-      <div className="bg-emerald/10 absolute left-1/4 top-1/4 h-96 w-96 rounded-full blur-3xl" />
-      <div className="bg-purple/10 absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full blur-3xl" />
+    <section className="relative min-h-[90vh] overflow-hidden">
+      {/* Base44-inspired gradient background */}
+      <div className="from-sky-light via-background to-coral-light/30 absolute inset-0 bg-gradient-to-b" />
+      <div className="bg-coral/20 absolute right-0 top-0 h-[600px] w-[600px] rounded-full blur-3xl" />
+      <div className="bg-sky/20 absolute -left-32 top-1/4 h-[500px] w-[500px] rounded-full blur-3xl" />
+      <div className="from-background absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t to-transparent" />
 
-      <div className="container relative z-10 mx-auto px-4 text-center">
-        <Badge
-          variant="outline"
-          className="border-emerald/30 bg-emerald/5 text-emerald mb-6"
-        >
-          <Sparkles className="mr-1.5 h-3.5 w-3.5" />
-          AI-Powered Automation Agency
-        </Badge>
-
-        <h1 className="from-foreground via-foreground to-muted-foreground mb-6 bg-gradient-to-br bg-clip-text text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-          Stop Working{" "}
-          <span className="from-emerald to-emerald-light bg-gradient-to-r bg-clip-text text-transparent">
-            Harder
+      <div className="container relative z-10 mx-auto flex min-h-[90vh] flex-col items-center justify-center px-4 pt-20">
+        {/* Logo mark */}
+        <div className="text-emerald mb-8 text-4xl font-bold">
+          <span className="from-emerald to-purple bg-gradient-to-r bg-clip-text text-transparent">
+            Poly
           </span>
-          .
-          <br />
-          Start Working{" "}
-          <span className="from-purple to-purple-light bg-gradient-to-r bg-clip-text text-transparent">
-            Smarter
-          </span>
-          .
-        </h1>
-
-        <p className="text-muted-foreground mx-auto mb-10 max-w-2xl text-lg sm:text-xl">
-          We build custom AI automation systems that eliminate repetitive tasks,
-          reduce human error, and let your team focus on what actually matters —
-          growing your business.
-        </p>
-
-        <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <Button size="lg" className="group h-auto px-8 py-6 text-base">
-            Book an Automation Audit
-            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-          </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            className="h-auto px-8 py-6 text-base"
-          >
-            See How It Works
-          </Button>
         </div>
 
-        {/* Stats row */}
-        <div className="mx-auto mt-16 grid max-w-3xl grid-cols-2 gap-8 md:grid-cols-4">
-          <div className="text-center">
-            <div className="text-emerald text-3xl font-bold sm:text-4xl">
-              40+
+        {/* Main headline */}
+        <h1 className="mb-4 text-center text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+          Automate your business.
+          <br />
+          <span className="text-muted-foreground">No code needed.</span>
+        </h1>
+
+        {/* Subheadline */}
+        <p className="text-muted-foreground mb-12 max-w-xl text-center text-lg">
+          Your workflows, without limits.
+        </p>
+
+        {/* Interactive input card */}
+        <div className="bg-card/90 mb-8 w-full max-w-2xl rounded-2xl border p-4 shadow-2xl backdrop-blur-sm">
+          <div className="flex items-center gap-4">
+            <div className="min-h-[60px] flex-1 px-2 py-3">
+              <p className="text-foreground text-base sm:text-lg">
+                {displayText}
+                <span className="bg-emerald ml-0.5 inline-block h-5 w-0.5 animate-pulse" />
+              </p>
             </div>
-            <div className="text-muted-foreground text-sm">
-              Hours Saved/Week
-            </div>
+            <Button
+              size="lg"
+              className="bg-lime text-lime-foreground hover:bg-lime/90 h-auto shrink-0 rounded-xl px-6 py-4 text-base font-semibold shadow-lg"
+            >
+              Build now
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
           </div>
-          <div className="text-center">
-            <div className="text-emerald text-3xl font-bold sm:text-4xl">
-              99%
-            </div>
-            <div className="text-muted-foreground text-sm">Error Reduction</div>
-          </div>
-          <div className="text-center">
-            <div className="text-purple text-3xl font-bold sm:text-4xl">3x</div>
-            <div className="text-muted-foreground text-sm">Revenue Growth</div>
-          </div>
-          <div className="text-center">
-            <div className="text-purple text-3xl font-bold sm:text-4xl">
-              24/7
-            </div>
-            <div className="text-muted-foreground text-sm">
-              Always-On Systems
-            </div>
+        </div>
+
+        {/* Quick start chips */}
+        <div className="mb-8 text-center">
+          <p className="text-muted-foreground mb-4 text-sm">
+            Not sure where to start? Try one of these:
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {quickStarts.map((item) => (
+              <button
+                key={item.label}
+                className="bg-card hover:bg-secondary inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors"
+              >
+                <span>{item.icon}</span>
+                {item.label}
+              </button>
+            ))}
           </div>
         </div>
       </div>

@@ -55,6 +55,14 @@
   --purple: oklch(0.55 0.24 285);
   --purple-light: oklch(0.7 0.2 285);
   --purple-dark: oklch(0.4 0.25 285);
+
+  /* High-contrast CTA colors (Base44 inspired) */
+  --lime: oklch(0.89 0.21 128);
+  --lime-foreground: oklch(0.2 0.05 128);
+  --coral: oklch(0.75 0.18 35);
+  --coral-light: oklch(0.85 0.14 35);
+  --sky: oklch(0.78 0.14 230);
+  --sky-light: oklch(0.88 0.1 230);
 }
 
 .dark {
@@ -99,6 +107,14 @@
   --purple: oklch(0.6 0.22 285);
   --purple-light: oklch(0.75 0.18 285);
   --purple-dark: oklch(0.45 0.25 285);
+
+  /* High-contrast CTA colors (Base44 inspired) */
+  --lime: oklch(0.89 0.21 128);
+  --lime-foreground: oklch(0.2 0.05 128);
+  --coral: oklch(0.75 0.18 35);
+  --coral-light: oklch(0.85 0.14 35);
+  --sky: oklch(0.78 0.14 230);
+  --sky-light: oklch(0.88 0.1 230);
 }
 
 @theme inline {
@@ -146,6 +162,14 @@
   --color-purple: var(--purple);
   --color-purple-light: var(--purple-light);
   --color-purple-dark: var(--purple-dark);
+
+  /* High-contrast CTA colors */
+  --color-lime: var(--lime);
+  --color-lime-foreground: var(--lime-foreground);
+  --color-coral: var(--coral);
+  --color-coral-light: var(--coral-light);
+  --color-sky: var(--sky);
+  --color-sky-light: var(--sky-light);
 }
 
 @layer base {
