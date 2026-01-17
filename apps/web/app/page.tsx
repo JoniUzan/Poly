@@ -1,12 +1,21 @@
-import { Button } from "@poly/ui/components/button";
+import {
+  Navbar,
+  Hero,
+  Features,
+  Pricing,
+  CTA,
+  Footer,
+} from "@/components/landing";
 
 export default function Page() {
   return (
-    <div className="flex min-h-svh items-center justify-center">
-      <div className="flex flex-col items-center justify-center gap-4">
-        <h1 className="text-2xl font-bold">Hello World</h1>
-        <Button size="sm">Button</Button>
-      </div>
-    </div>
+    <main className="bg-background min-h-screen">
+      <Navbar />
+      <Hero />
+      <Features />
+      <Pricing />
+      <CTA />
+      <Footer />
+    </main>
   );
 }

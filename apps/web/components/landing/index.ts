@@ -1,0 +1,10 @@
+export { Navbar } from "./navbar";
+export { Hero } from "./hero";
+export { SocialProof } from "./social-proof";
+export { Problem } from "./problem";
+export { Solution } from "./solution";
+export { Features } from "./features";
+export { Pricing } from "./pricing";
+export { CTA } from "./cta";
+export { Footer } from "./footer";
+export { ThemeToggle } from "./theme-toggle";
