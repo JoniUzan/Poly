@@ -9,37 +9,37 @@ export function Features() {
       <div className="container mx-auto px-4">
         {/* First Bento Row - Large left, content right */}
         <div className="mx-auto mb-8 grid max-w-6xl gap-6 lg:grid-cols-2">
-          {/* Large card with coral gradient - shows automation flow */}
-          <div className="from-coral to-coral-light relative overflow-hidden rounded-3xl bg-gradient-to-br p-8 lg:min-h-[400px]">
+          {/* Large card with blue gradient - shows automation flow */}
+          <div className="from-blue-medium to-blue-light relative overflow-hidden rounded-3xl bg-gradient-to-br p-8 lg:min-h-[400px]">
             {/* Floating UI mockup */}
             <div className="bg-card absolute bottom-8 left-1/2 w-[90%] -translate-x-1/2 rounded-2xl p-6 shadow-2xl">
               <div className="mb-4 flex items-center gap-3">
-                <div className="bg-emerald/20 h-8 w-8 rounded-lg" />
+                <div className="bg-lime/20 h-8 w-8 rounded-lg" />
                 <span className="text-foreground font-medium">
                   Building your Lead Automation
                 </span>
               </div>
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
-                  <CheckCircle2 className="text-emerald h-5 w-5" />
+                  <CheckCircle2 className="h-5 w-5 text-green-500" />
                   <span className="text-muted-foreground text-sm">
                     Setting up webhook triggers
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <CheckCircle2 className="text-emerald h-5 w-5" />
+                  <CheckCircle2 className="h-5 w-5 text-green-500" />
                   <span className="text-muted-foreground text-sm">
                     Connecting CRM integration
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <CheckCircle2 className="text-emerald h-5 w-5" />
+                  <CheckCircle2 className="h-5 w-5 text-green-500" />
                   <span className="text-muted-foreground text-sm">
                     Configuring email sequences
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <CheckCircle2 className="text-emerald h-5 w-5" />
+                  <CheckCircle2 className="h-5 w-5 text-green-500" />
                   <span className="text-muted-foreground text-sm">
                     Setting up AI qualification
                   </span>
@@ -55,11 +55,11 @@ export function Features() {
             </h2>
             <p className="text-muted-foreground mb-6 text-lg leading-relaxed">
               Just describe it — Poly helps you build it, host it, and get it
-              ready to launch. No code. No setup. Just go.
+              ready to launch. Just go.
             </p>
             <div>
               <Button className="bg-foreground text-background hover:bg-foreground/90 h-auto rounded-xl px-6 py-4 text-base font-semibold">
-                Start building
+                Contact us
               </Button>
             </div>
           </div>
@@ -70,26 +70,26 @@ export function Features() {
           {/* Content card - left side */}
           <div className="bg-secondary/50 flex flex-col justify-center rounded-3xl p-8 lg:p-12">
             <h2 className="mb-4 text-3xl font-bold sm:text-4xl">
-              Backend? Already done.
+              End-to-End Delivery
             </h2>
             <p className="text-muted-foreground mb-6 text-lg leading-relaxed">
-              CRM sync, data storage, AI logic — all built in, no extra setup
-              needed. Focus on your business while we handle the tech.
+              CRM sync, data storage, AI logic — all built in. Focus on your
+              business while we handle the tech.
             </p>
             <div>
               <Button className="bg-foreground text-background hover:bg-foreground/90 h-auto rounded-xl px-6 py-4 text-base font-semibold">
-                Start building
+                Contact us
               </Button>
             </div>
           </div>
 
-          {/* Large card with sky gradient */}
-          <div className="from-sky to-sky-light relative overflow-hidden rounded-3xl bg-gradient-to-br p-8 lg:min-h-[400px]">
+          {/* Large card with cream gradient */}
+          <div className="from-cream to-blue-pale relative overflow-hidden rounded-3xl bg-gradient-to-br p-8 lg:min-h-[400px]">
             {/* Floating chat UI mockup */}
             <div className="bg-card absolute bottom-8 left-1/2 w-[90%] -translate-x-1/2 rounded-2xl p-6 shadow-2xl">
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <div className="bg-purple/20 h-8 w-8 shrink-0 rounded-full" />
+                  <div className="bg-blue-medium/20 h-8 w-8 shrink-0 rounded-full" />
                   <div className="bg-secondary rounded-2xl rounded-tl-none p-3">
                     <p className="text-sm">
                       Hi! I&apos;m interested in your services. Do you offer
@@ -98,13 +98,13 @@ export function Features() {
                   </div>
                 </div>
                 <div className="flex justify-end gap-3">
-                  <div className="bg-emerald/10 rounded-2xl rounded-tr-none p-3">
+                  <div className="bg-lime/10 rounded-2xl rounded-tr-none p-3">
                     <p className="text-sm">
                       Absolutely! We build custom integrations for any platform.
                       What systems do you currently use?
                     </p>
                   </div>
-                  <div className="bg-emerald/20 h-8 w-8 shrink-0 rounded-full" />
+                  <div className="bg-lime/20 h-8 w-8 shrink-0 rounded-full" />
                 </div>
               </div>
             </div>
@@ -114,7 +114,7 @@ export function Features() {
         {/* Third Row - Three equal cards */}
         <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-3">
           <div className="bg-card group rounded-3xl border p-8 transition-all hover:shadow-lg">
-            <div className="bg-emerald/10 text-emerald mb-4 inline-flex rounded-xl p-3">
+            <div className="bg-lime/10 text-lime mb-4 inline-flex rounded-xl p-3">
               <svg
                 className="h-6 w-6"
                 fill="none"
@@ -129,15 +129,15 @@ export function Features() {
                 />
               </svg>
             </div>
-            <h3 className="mb-2 text-xl font-semibold">Lightning Fast</h3>
+            <h3 className="mb-2 text-xl font-semibold">Rapid Delivery</h3>
             <p className="text-muted-foreground">
-              Automations deploy in minutes, not weeks. See results from day
-              one.
+              From concept to production in weeks, not months. Our experienced
+              team delivers solutions fast.
             </p>
           </div>
 
           <div className="bg-card group rounded-3xl border p-8 transition-all hover:shadow-lg">
-            <div className="bg-purple/10 text-purple mb-4 inline-flex rounded-xl p-3">
+            <div className="bg-blue-medium/10 text-blue-medium mb-4 inline-flex rounded-xl p-3">
               <svg
                 className="h-6 w-6"
                 fill="none"
@@ -152,14 +152,14 @@ export function Features() {
                 />
               </svg>
             </div>
-            <h3 className="mb-2 text-xl font-semibold">Enterprise Security</h3>
+            <h3 className="mb-2 text-xl font-semibold">Secure & Reliable</h3>
             <p className="text-muted-foreground">
               Bank-grade encryption and compliance. Your data stays yours.
             </p>
           </div>
 
           <div className="bg-card group rounded-3xl border p-8 transition-all hover:shadow-lg">
-            <div className="bg-coral/20 text-coral mb-4 inline-flex rounded-xl p-3">
+            <div className="bg-brown/20 text-brown mb-4 inline-flex rounded-xl p-3">
               <svg
                 className="h-6 w-6"
                 fill="none"
@@ -176,7 +176,8 @@ export function Features() {
             </div>
             <h3 className="mb-2 text-xl font-semibold">Dedicated Support</h3>
             <p className="text-muted-foreground">
-              Real humans available when you need them. No chatbot runarounds.
+              Ongoing partnership with dedicated support. We're here when you
+              need us.
             </p>
           </div>
         </div>

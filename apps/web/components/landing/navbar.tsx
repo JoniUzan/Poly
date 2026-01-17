@@ -12,14 +12,7 @@ export function Navbar() {
   return (
     <nav className="absolute left-0 right-0 top-0 z-50">
       <div className="container mx-auto px-4">
-        <div className="flex h-20 items-center justify-between">
-          {/* Logo */}
-          <div className="text-2xl font-bold">
-            <span className="from-emerald to-purple bg-gradient-to-r bg-clip-text text-transparent">
-              Poly
-            </span>
-          </div>
-
+        <div className="flex h-20 items-center justify-end">
           {/* Desktop CTA + Theme Toggle */}
           <div className="hidden items-center gap-3 md:flex">
             <ThemeToggle />

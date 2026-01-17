@@ -51,31 +51,31 @@ export function Hero() {
   }, [displayText, isDeleting, exampleIndex]);
 
   return (
-    <section className="relative min-h-[90vh] overflow-hidden">
-      {/* Base44-inspired gradient background */}
-      <div className="from-sky-light via-background to-coral-light/30 absolute inset-0 bg-gradient-to-b" />
-      <div className="bg-coral/20 absolute right-0 top-0 h-[600px] w-[600px] rounded-full blur-3xl" />
-      <div className="bg-sky/20 absolute -left-32 top-1/4 h-[500px] w-[500px] rounded-full blur-3xl" />
-      <div className="from-background absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t to-transparent" />
+    <section className="relative h-screen overflow-hidden">
+      {/* Background image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url('/gradient-bg.avif')`,
+        }}
+      />
 
-      <div className="container relative z-10 mx-auto flex min-h-[90vh] flex-col items-center justify-center px-4 pt-20">
+      <div className="container relative z-10 mx-auto flex h-screen flex-col items-center justify-center px-4 pt-20">
         {/* Logo mark */}
-        <div className="text-emerald mb-8 text-4xl font-bold">
-          <span className="from-emerald to-purple bg-gradient-to-r bg-clip-text text-transparent">
-            Poly
-          </span>
-        </div>
+        <div className="mb-8 text-4xl font-bold">Polychain</div>
 
         {/* Main headline */}
         <h1 className="mb-4 text-center text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-          Automate your business.
+          We Build AI
           <br />
-          <span className="text-muted-foreground">No code needed.</span>
+          <span className="text-muted-foreground italic">
+            That Works for You
+          </span>
         </h1>
 
         {/* Subheadline */}
         <p className="text-muted-foreground mb-12 max-w-xl text-center text-lg">
-          Your workflows, without limits.
+          Custom AI solutions that scale with your business.
         </p>
 
         {/* Interactive input card */}
@@ -84,14 +84,14 @@ export function Hero() {
             <div className="min-h-[60px] flex-1 px-2 py-3">
               <p className="text-foreground text-base sm:text-lg">
                 {displayText}
-                <span className="bg-emerald ml-0.5 inline-block h-5 w-0.5 animate-pulse" />
+                <span className="bg-lime ml-0.5 inline-block h-5 w-0.5 animate-pulse" />
               </p>
             </div>
             <Button
               size="lg"
               className="bg-lime text-lime-foreground hover:bg-lime/90 h-auto shrink-0 rounded-xl px-6 py-4 text-base font-semibold shadow-lg"
             >
-              Build now
+              Contact us
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>

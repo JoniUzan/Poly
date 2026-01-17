@@ -9,28 +9,28 @@ const solutions = [
     title: "Intelligent AI Agents",
     description:
       "Custom-built AI assistants that handle customer inquiries, qualify leads, and manage routine communications — 24/7, without breaks.",
-    color: "emerald",
+    color: "lime",
   },
   {
     icon: RefreshCcw,
     title: "Seamless CRM Syncing",
     description:
       'Your data flows automatically between systems. No more manual updates, no more data silos, no more "which spreadsheet has the latest version?"',
-    color: "purple",
+    color: "blue-medium",
   },
   {
     icon: Zap,
     title: "Automated Reporting",
     description:
       "Get real-time dashboards and auto-generated reports delivered to your inbox. Make decisions based on data, not gut feelings.",
-    color: "emerald",
+    color: "lime",
   },
   {
     icon: Shield,
     title: "Custom Proprietary Logic",
     description:
       "We build bespoke automation workflows tailored to your exact business processes — not off-the-shelf solutions that force you to adapt.",
-    color: "purple",
+    color: "blue-medium",
   },
 ];
 
@@ -38,22 +38,22 @@ export function Solution() {
   return (
     <section className="relative overflow-hidden py-24">
       {/* Gradient background */}
-      <div className="from-emerald/5 to-purple/5 absolute inset-0 bg-gradient-to-b via-transparent" />
-      <div className="bg-emerald/5 absolute right-0 top-0 h-[500px] w-[500px] rounded-full blur-3xl" />
-      <div className="bg-purple/5 absolute bottom-0 left-0 h-[500px] w-[500px] rounded-full blur-3xl" />
+      <div className="from-lime/5 to-blue-medium/5 absolute inset-0 bg-gradient-to-b via-transparent" />
+      <div className="bg-lime/5 absolute right-0 top-0 h-[500px] w-[500px] rounded-full blur-3xl" />
+      <div className="bg-blue-medium/5 absolute bottom-0 left-0 h-[500px] w-[500px] rounded-full blur-3xl" />
 
       <div className="container relative mx-auto px-4">
         <div className="mx-auto mb-16 max-w-3xl text-center">
           <Badge
             variant="outline"
-            className="border-emerald/30 bg-emerald/5 text-emerald mb-4"
+            className="border-lime/30 bg-lime/5 text-lime mb-4"
           >
             The Solution
           </Badge>
           <h2 className="mb-6 text-3xl font-bold sm:text-4xl md:text-5xl">
             The{" "}
-            <span className="from-emerald to-purple bg-gradient-to-r bg-clip-text text-transparent">
-              Poly
+            <span className="from-lime to-blue-medium bg-gradient-to-r bg-clip-text text-transparent">
+              Polychain
             </span>{" "}
             Way
           </h2>
@@ -69,9 +69,9 @@ export function Solution() {
             <div
               key={solution.title}
               className={`bg-card/50 group relative rounded-2xl border p-8 backdrop-blur-sm transition-all hover:shadow-lg ${
-                solution.color === "emerald"
-                  ? "border-emerald/20 hover:border-emerald/40"
-                  : "border-purple/20 hover:border-purple/40"
+                solution.color === "lime"
+                  ? "border-lime/20 hover:border-lime/40"
+                  : "border-blue-medium/20 hover:border-blue-medium/40"
               }`}
             >
               {/* Number badge */}
@@ -81,9 +81,9 @@ export function Solution() {
 
               <div
                 className={`mb-4 inline-flex rounded-xl p-3 ${
-                  solution.color === "emerald"
-                    ? "bg-emerald/10 text-emerald"
-                    : "bg-purple/10 text-purple"
+                  solution.color === "lime"
+                    ? "bg-lime/10 text-lime"
+                    : "bg-blue-medium/10 text-blue-medium"
                 }`}
               >
                 <solution.icon className="h-7 w-7" />

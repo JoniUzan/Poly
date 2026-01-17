@@ -8,8 +8,8 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Poly Automations - Supabase-inspired color palette
- * Dark mode first approach with emerald green accents and royal purple highlights
+ * Polychain - Custom AI Solutions
+ * Blue-based palette with lime CTAs and warm brown accents
  */
 
 :root {
@@ -20,101 +20,91 @@
   --card-foreground: oklch(0.1 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.1 0 0);
-  --primary: oklch(0.72 0.19 155); /* Emerald green */
-  --primary-foreground: oklch(0.1 0 0);
+  --primary: oklch(0.65 0.12 250); /* Blue medium - brand color */
+  --primary-foreground: oklch(0.99 0 0);
   --secondary: oklch(0.96 0 0);
   --secondary-foreground: oklch(0.1 0 0);
   --muted: oklch(0.96 0 0);
   --muted-foreground: oklch(0.45 0 0);
-  --accent: oklch(0.55 0.24 285); /* Royal purple */
-  --accent-foreground: oklch(0.99 0 0);
+  --accent: oklch(0.89 0.21 128); /* Lime - highlight color */
+  --accent-foreground: oklch(0.2 0.05 128);
   --destructive: oklch(0.55 0.22 27);
   --destructive-foreground: oklch(0.99 0 0);
   --border: oklch(0.9 0 0);
   --input: oklch(0.9 0 0);
-  --ring: oklch(0.72 0.19 155); /* Emerald ring */
-  --chart-1: oklch(0.72 0.19 155); /* Emerald */
-  --chart-2: oklch(0.55 0.24 285); /* Purple */
-  --chart-3: oklch(0.65 0.2 200); /* Teal */
-  --chart-4: oklch(0.75 0.15 85); /* Gold */
-  --chart-5: oklch(0.6 0.18 320); /* Pink */
+  --ring: oklch(0.65 0.12 250); /* Blue ring */
+  --chart-1: oklch(0.65 0.12 250); /* Blue medium */
+  --chart-2: oklch(0.89 0.21 128); /* Lime */
+  --chart-3: oklch(0.85 0.08 250); /* Light blue */
+  --chart-4: oklch(0.92 0.06 95); /* Cream */
+  --chart-5: oklch(0.42 0.1 30); /* Brown */
   --radius: 0.625rem;
   --sidebar: oklch(0.98 0 0);
   --sidebar-foreground: oklch(0.1 0 0);
-  --sidebar-primary: oklch(0.72 0.19 155);
-  --sidebar-primary-foreground: oklch(0.1 0 0);
-  --sidebar-accent: oklch(0.95 0 0);
-  --sidebar-accent-foreground: oklch(0.1 0 0);
+  --sidebar-primary: oklch(0.65 0.12 250);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.89 0.21 128);
+  --sidebar-accent-foreground: oklch(0.2 0.05 128);
   --sidebar-border: oklch(0.9 0 0);
-  --sidebar-ring: oklch(0.72 0.19 155);
+  --sidebar-ring: oklch(0.65 0.12 250);
 
-  /* Brand colors for direct use */
-  --emerald: oklch(0.72 0.19 155);
-  --emerald-light: oklch(0.82 0.15 155);
-  --emerald-dark: oklch(0.55 0.2 155);
-  --purple: oklch(0.55 0.24 285);
-  --purple-light: oklch(0.7 0.2 285);
-  --purple-dark: oklch(0.4 0.25 285);
-
-  /* High-contrast CTA colors (Base44 inspired) */
+  /* High-contrast CTA colors */
   --lime: oklch(0.89 0.21 128);
   --lime-foreground: oklch(0.2 0.05 128);
-  --coral: oklch(0.75 0.18 35);
-  --coral-light: oklch(0.85 0.14 35);
-  --sky: oklch(0.78 0.14 230);
-  --sky-light: oklch(0.88 0.1 230);
+
+  /* Custom palette - blues, cream & brown */
+  --blue-medium: #6f9ad4;
+  --blue-light: #c4e9ff;
+  --blue-pale: #ddffff;
+  --cream: #f9f2d7;
+  --brown: #754e46;
 }
 
 .dark {
-  /* Dark mode - deep blacks with vibrant accents */
+  /* Dark mode - deep blacks with blue accents */
   --background: oklch(0.08 0 0); /* Near black */
   --foreground: oklch(0.95 0 0);
-  --card: oklch(0.12 0.005 285); /* Subtle purple tint */
+  --card: oklch(0.12 0.01 250); /* Subtle blue tint */
   --card-foreground: oklch(0.95 0 0);
   --popover: oklch(0.1 0 0);
   --popover-foreground: oklch(0.95 0 0);
-  --primary: oklch(0.72 0.19 155); /* Emerald green */
-  --primary-foreground: oklch(0.1 0 0);
-  --secondary: oklch(0.18 0.01 285); /* Dark with purple tint */
+  --primary: oklch(0.65 0.12 250); /* Blue medium - brand color */
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.18 0.01 250); /* Dark with blue tint */
   --secondary-foreground: oklch(0.95 0 0);
   --muted: oklch(0.2 0 0);
   --muted-foreground: oklch(0.6 0 0);
-  --accent: oklch(0.6 0.22 285); /* Royal purple */
-  --accent-foreground: oklch(0.95 0 0);
+  --accent: oklch(0.89 0.21 128); /* Lime - highlight color */
+  --accent-foreground: oklch(0.2 0.05 128);
   --destructive: oklch(0.5 0.2 27);
   --destructive-foreground: oklch(0.95 0 0);
-  --border: oklch(0.22 0.01 285); /* Subtle purple border */
-  --input: oklch(0.18 0.01 285);
-  --ring: oklch(0.72 0.19 155); /* Emerald ring */
-  --chart-1: oklch(0.72 0.19 155); /* Emerald */
-  --chart-2: oklch(0.6 0.22 285); /* Purple */
-  --chart-3: oklch(0.7 0.18 200); /* Teal */
-  --chart-4: oklch(0.78 0.15 85); /* Gold */
-  --chart-5: oklch(0.65 0.2 320); /* Pink */
-  --sidebar: oklch(0.1 0.005 285);
+  --border: oklch(0.22 0.01 250); /* Subtle blue border */
+  --input: oklch(0.18 0.01 250);
+  --ring: oklch(0.65 0.12 250); /* Blue ring */
+  --chart-1: oklch(0.65 0.12 250); /* Blue medium */
+  --chart-2: oklch(0.89 0.21 128); /* Lime */
+  --chart-3: oklch(0.8 0.1 250); /* Light blue */
+  --chart-4: oklch(0.88 0.08 95); /* Cream */
+  --chart-5: oklch(0.42 0.1 30); /* Brown */
+  --sidebar: oklch(0.1 0.005 250);
   --sidebar-foreground: oklch(0.95 0 0);
-  --sidebar-primary: oklch(0.72 0.19 155);
-  --sidebar-primary-foreground: oklch(0.1 0 0);
-  --sidebar-accent: oklch(0.18 0.01 285);
-  --sidebar-accent-foreground: oklch(0.95 0 0);
-  --sidebar-border: oklch(0.22 0.01 285);
-  --sidebar-ring: oklch(0.72 0.19 155);
+  --sidebar-primary: oklch(0.65 0.12 250);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.89 0.21 128);
+  --sidebar-accent-foreground: oklch(0.2 0.05 128);
+  --sidebar-border: oklch(0.22 0.01 250);
+  --sidebar-ring: oklch(0.65 0.12 250);
 
-  /* Brand colors for direct use */
-  --emerald: oklch(0.72 0.19 155);
-  --emerald-light: oklch(0.82 0.15 155);
-  --emerald-dark: oklch(0.55 0.2 155);
-  --purple: oklch(0.6 0.22 285);
-  --purple-light: oklch(0.75 0.18 285);
-  --purple-dark: oklch(0.45 0.25 285);
-
-  /* High-contrast CTA colors (Base44 inspired) */
+  /* High-contrast CTA colors */
   --lime: oklch(0.89 0.21 128);
   --lime-foreground: oklch(0.2 0.05 128);
-  --coral: oklch(0.75 0.18 35);
-  --coral-light: oklch(0.85 0.14 35);
-  --sky: oklch(0.78 0.14 230);
-  --sky-light: oklch(0.88 0.1 230);
+
+  /* Custom palette - blues, cream & brown */
+  --blue-medium: #6f9ad4;
+  --blue-light: #c4e9ff;
+  --blue-pale: #ddffff;
+  --cream: #f9f2d7;
+  --brown: #754e46;
 }
 
 @theme inline {
@@ -155,21 +145,16 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  /* Brand colors for Tailwind classes */
-  --color-emerald: var(--emerald);
-  --color-emerald-light: var(--emerald-light);
-  --color-emerald-dark: var(--emerald-dark);
-  --color-purple: var(--purple);
-  --color-purple-light: var(--purple-light);
-  --color-purple-dark: var(--purple-dark);
-
   /* High-contrast CTA colors */
   --color-lime: var(--lime);
   --color-lime-foreground: var(--lime-foreground);
-  --color-coral: var(--coral);
-  --color-coral-light: var(--coral-light);
-  --color-sky: var(--sky);
-  --color-sky-light: var(--sky-light);
+
+  /* Brand palette - blues, cream & brown */
+  --color-blue-medium: var(--blue-medium);
+  --color-blue-light: var(--blue-light);
+  --color-blue-pale: var(--blue-pale);
+  --color-cream: var(--cream);
+  --color-brown: var(--brown);
 }
 
 @layer base {
